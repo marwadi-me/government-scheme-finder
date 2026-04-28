@@ -30,12 +30,13 @@ Many government schemes go unused simply because citizens aren't aware of them. 
 
 | Layer | Technology |
 |---|---|
-| Frontend | React.js |
-| Styling | CSS / Tailwind CSS |
-| Backend | Node.js + Express *(planned)* |
-| Database | MongoDB *(planned)* |
-| API | Government open data APIs / custom scraped data |
-| Deployment | Vercel / Render *(planned)* |
+| Structure | HTML5 |
+| Styling | CSS3 (Vanilla CSS) |
+| Logic | JavaScript (ES6+) |
+| UI Framework | React.js |
+| Data Fetching | REST APIs (Fetch API / Axios) |
+| API Source | [MyScheme API](https://api.myscheme.gov.in) / Custom Government Open Data APIs |
+| Deployment | GitHub Pages / Vercel *(planned)* |
 
 ---
 
@@ -44,11 +45,13 @@ Many government schemes go unused simply because citizens aren't aware of them. 
 ```
 government-scheme-finder/
 ├── public/
+│   └── index.html
 ├── src/
-│   ├── components/       # Reusable UI components
-│   ├── pages/            # Home, Search, SchemeDetail, Profile
-│   ├── data/             # Static scheme data (initial phase)
-│   ├── utils/            # Helper functions
+│   ├── components/       # Reusable UI components (Navbar, SchemeCard, Filters)
+│   ├── pages/            # Home, Search, SchemeDetail, About
+│   ├── services/         # API call functions (fetchSchemes, fetchByCategory, etc.)
+│   ├── utils/            # Helper functions (filters, formatters)
+│   ├── styles/           # CSS files per component/page
 │   └── App.jsx
 ├── README.md
 └── package.json
@@ -61,6 +64,8 @@ government-scheme-finder/
 ### Prerequisites
 - Node.js (v18+)
 - npm or yarn
+- A browser (Chrome recommended)
+- API Key *(if required by the chosen government API)*
 
 ### Installation
 
@@ -75,7 +80,15 @@ cd government-scheme-finder
 npm install
 
 # Start the development server
-npm run dev
+npm start
+```
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+```env
+REACT_APP_API_BASE_URL=https://api.myscheme.gov.in
+REACT_APP_API_KEY=your_api_key_here
 ```
 
 ---
