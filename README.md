@@ -1,122 +1,213 @@
-# 🏛️ Government Scheme Finder
-
-A web application to help Indian citizens easily discover and understand government schemes relevant to their profile — by category, state, eligibility, and more.
-
----
+# 🧾 Government Scheme Finder (Smart Eligibility Engine)
 
 ## 📌 Project Overview
 
-Many government schemes go unused simply because citizens aren't aware of them. **Government Scheme Finder** solves this by providing a centralized, easy-to-search platform where users can filter and find schemes based on:
+Government Scheme Finder is a web-based application that helps users discover government schemes they are eligible for based on their personal profile. The system simplifies access to public welfare programs by filtering relevant schemes and explaining eligibility in a user-friendly manner.
 
-- 👤 Personal profile (age, gender, income, occupation)
-- 🗺️ State / Central government schemes
-- 📂 Category (education, agriculture, health, housing, women empowerment, etc.)
-- ✅ Eligibility criteria
+This project focuses on bridging the gap between citizens and government initiatives by transforming complex and scattered data into meaningful insights.
 
 ---
 
-## 🎯 Key Features (Planned)
+## 🎯 Problem Statement
 
-- 🔍 **Smart Search** — Search schemes by keyword, category, or department
-- 🧩 **Filter by Profile** — Filter schemes by age group, gender, income level, and state
-- 📋 **Scheme Details Page** — Full information including benefits, eligibility, and how to apply
-- 🔖 **Bookmarks** — Save schemes for later reference
-- 📊 **Dashboard** — Personalized scheme recommendations based on user profile
-- 🌐 **Multilingual Support** *(stretch goal)* — Support for regional Indian languages
+Many government schemes remain underutilized because people are unaware of their existence or do not understand whether they qualify for them. Existing platforms are often complex, unstructured, and difficult to navigate.
 
----
+This project aims to solve this problem by providing a simple, intelligent interface that:
 
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Structure | HTML5 |
-| Styling | CSS3 (Vanilla CSS) |
-| Logic | JavaScript (ES6+) |
-| UI Framework | React.js |
-| Data Fetching | REST APIs (Fetch API / Axios) |
-| API Source | [MyScheme API](https://api.myscheme.gov.in) / Custom Government Open Data APIs |
-| Deployment | GitHub Pages / Vercel *(planned)* |
+* Identifies relevant schemes for a user
+* Explains eligibility clearly
+* Improves accessibility to welfare programs
 
 ---
 
-## 🗂️ Project Structure *(Planned)*
+## 💡 Proposed Solution
 
-```
-government-scheme-finder/
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/       # Reusable UI components (Navbar, SchemeCard, Filters)
-│   ├── pages/            # Home, Search, SchemeDetail, About
-│   ├── services/         # API call functions (fetchSchemes, fetchByCategory, etc.)
-│   ├── utils/            # Helper functions (filters, formatters)
-│   ├── styles/           # CSS files per component/page
-│   └── App.jsx
-├── README.md
-└── package.json
-```
+The application collects basic user information such as age, income, occupation, and location, and matches it against predefined eligibility criteria of various schemes.
+
+It then:
+
+* Filters eligible schemes
+* Displays them in a clean UI
+* Provides explanations for eligibility
+* Allows filtering and bookmarking
 
 ---
 
-## 🚀 Getting Started
+## 🧠 Key Features
 
-### Prerequisites
-- Node.js (v18+)
-- npm or yarn
-- A browser (Chrome recommended)
-- API Key *(if required by the chosen government API)*
+### 👤 User Profiling
 
-### Installation
+* Input fields:
 
-```bash
-# Clone the repository
-git clone https://github.com/<your-username>/government-scheme-finder.git
+  * Age
+  * Income
+  * Occupation (Student, Farmer, etc.)
+  * State
 
-# Navigate to the project directory
-cd government-scheme-finder
+### 🔍 Smart Eligibility Matching
 
-# Install dependencies
-npm install
+* Filters schemes based on:
 
-# Start the development server
-npm start
-```
+  * Age range
+  * Income limits
+  * Occupation
+* Uses rule-based logic for matching
 
-### Environment Variables
+### 📋 Scheme Display
 
-Create a `.env` file in the root directory:
-```env
-REACT_APP_API_BASE_URL=https://api.myscheme.gov.in
-REACT_APP_API_KEY=your_api_key_here
-```
+* Clean card-based UI
+* Each card includes:
 
----
+  * Scheme name
+  * Category
+  * Benefits
+  * Eligibility summary
 
-## 📅 Development Roadmap
+### 🧠 Eligibility Explanation
 
-| Phase | Goal | Status |
-|---|---|---|
-| Phase 1 | Project setup, README, UI wireframes | ✅ In Progress |
-| Phase 2 | Static scheme data + Search & Filter UI | 🔜 Upcoming |
-| Phase 3 | Backend API + Database integration | 🔜 Upcoming |
-| Phase 4 | User authentication + Bookmarks | 🔜 Upcoming |
-| Phase 5 | Deployment + Final testing | 🔜 Upcoming |
+* Displays:
 
----
+  * "Why you are eligible"
+* Improves transparency and trust
 
-## 🧑‍💻 Author
+### 🎯 Category Filtering
 
-**Yashvardhan Mundhra**
-B.Tech — 1st Year
-Capstone Project — 2025–26
+* Education
+* Health
+* Agriculture
+* Women & Welfare
 
----
+### ❤️ Bookmark Feature (Optional)
 
-## 📄 License
+* Save schemes for later reference
 
-This project is licensed under the [MIT License](LICENSE).
+### 📊 Eligibility Score (Optional)
+
+* Displays percentage match with scheme criteria
 
 ---
 
-> _"Technology should serve every citizen, not just those who know where to look."_
+## 🔌 API Integration
+
+### Primary Source:
+
+* data.gov.in (India Open Government Data)
+
+### API Usage:
+
+* Fetch scheme-related data
+* Extract useful fields such as title and category
+* Transform raw data into structured format
+
+### Data Handling Strategy:
+
+* API data is cleaned and simplified
+* Missing fields (like income limits) are manually defined
+* Hybrid approach (API + custom logic)
+
+---
+
+## 🧱 System Architecture
+
+### Frontend:
+
+* React.js
+* HTML, CSS, JavaScript
+
+### Data Flow:
+
+1. Fetch API data
+2. Clean and structure data
+3. Store in state
+4. Apply eligibility logic
+5. Render UI
+
+---
+
+## ⚙️ Core Logic
+
+Eligibility is determined using rule-based filtering:
+
+* Age must fall within defined range
+* Income must be below threshold
+* Occupation must match (if required)
+
+The system ensures flexibility by allowing optional conditions.
+
+---
+
+## 🖥️ Component Structure
+
+* App
+
+  * Navbar
+  * UserForm
+  * FilterBar
+  * SchemeList
+
+    * SchemeCard
+  * BookmarkList (optional)
+  * SchemeDetails (optional)
+
+---
+
+## 🎨 UI/UX Design Principles
+
+* Clean and minimal interface
+* Card-based layout for readability
+* Responsive design
+* Simple forms for accessibility
+* Clear visual hierarchy
+
+---
+
+## 🚀 Implementation Plan
+
+### Phase 1:
+
+* Build UI and form
+* Create dummy dataset
+
+### Phase 2:
+
+* Implement eligibility logic
+* Display filtered schemes
+
+### Phase 3:
+
+* Integrate API
+* Add enhancements (bookmark, filters)
+
+---
+
+## ⚠️ Challenges
+
+* Unstructured API data
+* Defining eligibility rules manually
+* Maintaining simplicity while ensuring usefulness
+
+---
+
+## 🏆 Expected Outcome
+
+* A functional and user-friendly application
+* Demonstration of frontend development skills
+* Practical solution to a real-world problem
+* Strong portfolio project
+
+---
+
+## 📈 Future Enhancements
+
+* AI-based recommendation system
+* Multi-language support
+* Real-time updates from APIs
+* Integration with application portals
+
+---
+
+## 🧠 Conclusion
+
+Government Scheme Finder is designed as a practical solution to improve awareness and accessibility of public welfare programs. By combining structured logic with clean UI, the application transforms complex data into meaningful guidance for users.
+
+---
