@@ -38,19 +38,6 @@ Most government schemes go unused because people don't know about them or find i
 
 ---
 
-## Project Structure
-
-```
-src/
-├── components/    # Navbar, SchemeCard, FilterBar
-├── pages/         # Home, Results, About
-├── services/      # API calls
-├── utils/         # Eligibility logic
-└── styles/        # CSS files
-```
-
----
-
 ## How to Run
 
 ```bash
@@ -59,19 +46,3 @@ cd government-scheme-finder
 npm install
 npm start
 ```
-
----
-
-## Roadmap
-
-- [x] Project setup & README
-- [ ] UI + form
-- [ ] Eligibility logic
-- [ ] API integration
-- [ ] Filters, bookmarks, deployment
-
----
-
-## Author
-
-Yashvardhan Mundhra — B.Tech 1st Year | Capstone Project 2025–26
