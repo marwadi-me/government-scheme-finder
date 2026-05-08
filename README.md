@@ -1,48 +1,66 @@
-# Government Scheme Finder
+# 🏛️ Government Scheme Finder
 
-A web app that helps Indian citizens find government schemes they are eligible for based on their profile (age, income, occupation, and state).
-
----
-
-## Problem
-
-Most government schemes go unused because people don't know about them or find it hard to check eligibility. This app makes that process simple.
+A modern web application designed to help Indian citizens discover government schemes they are eligible for based on their personal profile (age, income, occupation, and state).
 
 ---
 
-## What it does
+## 🚀 Features
 
-- User fills a form with their basic details
-- App matches them with eligible schemes using rule-based logic
-- Results are shown as cards with scheme name, benefits, and why they qualify
-- Users can filter by category and bookmark schemes
-
----
-
-## Tech Stack
-
-- HTML, CSS, JavaScript
-- React.js
-- data.gov.in API for scheme data
+- **Personalized Discovery:** A smart eligibility form that matches users with schemes.
+- **Real-time Filtering:** Instantly filter schemes by categories like Education, Health, Agriculture, and Women Welfare.
+- **Scheme Dashboard:** Clean, interactive cards displaying benefits, eligibility criteria, and direct application links.
+- **Custom API:** Powered by a curated database of 30+ real Indian government schemes hosted via My JSON Server.
 
 ---
 
-## Features
+## 🛠️ Tech Stack
 
-- User profile form (age, income, occupation, state)
-- Eligibility matching logic
-- Scheme cards with category, benefits, and eligibility reason
-- Category filters (Education, Health, Agriculture, Women & Welfare)
-- Bookmark schemes *(optional)*
-- Eligibility score *(optional)*
+- **Frontend:** React.js (Vite)
+- **Styling:** Tailwind CSS v4
+- **API:** My JSON Server (Custom REST API)
+- **Data Source:** Curated database of real Indian government schemes.
 
 ---
 
-## How to Run
+## 📂 Project Structure
 
-```bash
-git clone https://github.com/<your-username>/government-scheme-finder.git
-cd government-scheme-finder
-npm install
-npm start
+```text
+src/
+├── assets/              # Icons and images
+├── components/          # Reusable UI components
+│   ├── ProfileForm.jsx  # Eligibility input form
+│   ├── SchemeCard.jsx   # Individual scheme display
+│   └── FilterBar.jsx    # Category filters
+├── data/
+│   └── db.json          # Local scheme database
+├── App.jsx              # Main application logic
+├── main.jsx             # Entry point
+└── index.css            # Tailwind styles
 ```
+
+---
+
+## ⚙️ How to Run
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Marwadi-me/government-scheme-finder.git
+   cd government-scheme-finder
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📡 API Endpoint
+
+The project uses a live API for scheme data:
+[https://my-json-server.typicode.com/Marwadi-me/government-scheme-finder/schemes](https://my-json-server.typicode.com/Marwadi-me/government-scheme-finder/schemes)
