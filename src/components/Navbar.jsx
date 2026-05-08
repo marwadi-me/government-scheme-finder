@@ -25,7 +25,7 @@ const Navbar = () => {
             User Info
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF9933] transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <Link to="/form" className="group relative py-2 text-base font-bold text-slate-700 hover:text-[#138808] transition-colors">
+          <Link to="/schemes" className="group relative py-2 text-base font-bold text-slate-700 hover:text-[#138808] transition-colors">
             Schemes
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#138808] transition-all duration-300 group-hover:w-full"></span>
           </Link>
@@ -42,8 +42,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Decorative Gradient Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#FF9933] via-white to-[#138808]"></div>
     </nav>
   )
 }
