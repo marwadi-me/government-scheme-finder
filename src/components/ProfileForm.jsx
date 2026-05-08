@@ -7,6 +7,8 @@ const initialState = {
   age: '',
   gender: '',
   district: '',
+  annualIncome: '', // Added annual income field
+  casteCategory: '', // Added caste/category field
 };
 
 const ProfileForm = () => {
@@ -106,6 +108,41 @@ const ProfileForm = () => {
                 placeholder="Your district"
                 className="w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
               />
+            </div>
+            <div>
+  <label className="block text-sm font-medium text-slate-700 mb-1">Annual Family Income</label>
+  <input
+    type="text"
+    name="annualIncome"
+    list="incomeRanges"
+    value={form.annualIncome}
+    onChange={handleChange}
+    placeholder="Select or type income"
+    className="w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+  />
+  <datalist id="incomeRanges">
+    <option value="Below ₹1,00,000" />
+    <option value="₹1,00,001 - ₹3,00,000" />
+    <option value="₹3,00,001 - ₹5,00,000" />
+    <option value="₹5,00,001 - ₹10,00,000" />
+    <option value="Above ₹10,00,000" />
+  </datalist>
+</div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Caste / Category</label>
+              <select
+                name="casteCategory"
+                value={form.casteCategory}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-slate-300 px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              >
+                <option value="">Select</option>
+                <option value="general">General</option>
+                <option value="obc">OBC</option>
+                <option value="sc">SC</option>
+                <option value="st">ST</option>
+                <option value="other">Other</option>
+              </select>
             </div>
           </div>
           <button
