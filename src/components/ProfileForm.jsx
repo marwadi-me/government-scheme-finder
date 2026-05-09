@@ -29,7 +29,7 @@ const ProfileForm = () => {
 
   // Fetch all schemes once when the page loads
   useEffect(() => {
-    fetch("/db.json")
+    fetch('/db.json')
       .then(res => res.json())
       .then(data => setAllSchemes(data.schemes))
       .catch(err => console.error("Failed to load schemes:", err));
