@@ -1,49 +1,40 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Landmark } from 'lucide-react'
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
-  return (
-    <nav className="sticky top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-[100] h-20 transition-all border-b border-slate-100">
-      <div className="w-full px-8 h-full flex items-center justify-between relative">
-        
-        {/* Far Left: Logo */}
-        <div className="flex-shrink-0">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="bg-[#FF9933]/15 p-2 rounded-xl">
-              <Landmark className="w-7 h-7 text-[#FF9933]" />
-            </div>
-            <span className="text-2xl font-black tracking-tight text-slate-900">
-              Adhikar
-            </span>
-          </Link>
-        </div>
+// isDark and toggleDark are passed from App.jsx
+const Navbar = ({ isDark, toggleDark }) => (
+  <nav className="sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-[100] h-20 border-b border-slate-100 dark:border-gray-700 transition-colors duration-300">
+    <div className="w-full px-8 h-full flex items-center justify-between">
 
-        {/* Center: Links (Absolute Centered) */}
-        <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-10">
-          <Link to="/form" className="group relative py-2 text-base font-bold text-slate-700 hover:text-[#FF9933] transition-colors">
-            User Info
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF9933] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link to="/schemes" className="group relative py-2 text-base font-bold text-slate-700 hover:text-[#138808] transition-colors">
-            Schemes
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#138808] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-        </div>
+      {/* Logo */}
+      <Link to="/" className="flex items-center gap-3">
+        <div className="bg-[#FF9933]/15 p-2 rounded-xl text-xl">🏛</div>
+        <span className="text-2xl font-black text-slate-900 dark:text-white">Adhikar</span>
+      </Link>
 
-        {/* Far Right: Gradient Button */}
-        <div className="flex-shrink-0">
-          <Link 
-            to="/form" 
-            className="px-8 py-2.5 rounded-xl bg-gradient-to-r from-[#FF9933] to-[#e67e00] text-white text-base font-bold hover:scale-105 transition-all shadow-lg shadow-[#FF9933]/20"
-          >
-            Get Started
-          </Link>
-        </div>
+      {/* Nav Links */}
+      <div className="hidden md:flex items-center gap-10">
+        <Link to="/form" className="font-bold text-slate-700 dark:text-gray-300 hover:text-[#FF9933] transition-colors">User Info</Link>
+        <Link to="/schemes" className="font-bold text-slate-700 dark:text-gray-300 hover:text-[#138808] transition-colors">Schemes</Link>
       </div>
 
-    </nav>
-  )
-}
+      {/* Right side: Dark mode toggle + CTA */}
+      <div className="flex items-center gap-3">
 
-export default Navbar
+        {/* Dark mode toggle button */}
+        <button
+          onClick={toggleDark}
+          className="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-gray-600 bg-slate-50 dark:bg-gray-800 text-xl transition-colors hover:bg-slate-100 dark:hover:bg-gray-700"
+        >
+          {isDark ? '☀️' : '🌙'}
+        </button>
+
+        <Link to="/form" className="px-8 py-2.5 rounded-xl bg-[#FF9933] text-white font-bold hover:bg-orange-600 transition-colors">
+          Get Started
+        </Link>
+      </div>
+
+    </div>
+  </nav>
+);
+
+export default Navbar;

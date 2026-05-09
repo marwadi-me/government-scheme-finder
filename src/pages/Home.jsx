@@ -6,16 +6,16 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
 
-      <section className="relative min-h-[70vh] flex items-center py-20 bg-white">
+      {/* Hero Section */}
+      <section className="section-base relative min-h-[70vh] flex items-center py-20">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <img src={ParliamentImg} alt="Parliament" className="w-full h-full object-cover object-top" style={{ mixBlendMode: 'multiply' }} />
         </div>
-
         <div className="relative w-full max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-900">
+          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white">
             Discover Government Schemes <br /> <span className="text-[#FF9933]">Made For You</span>
           </h1>
-          <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="mt-6 text-lg text-body max-w-2xl mx-auto">
             Answer a few simple questions and instantly find all central and state government schemes you are eligible for.
           </p>
           <div className="mt-8">
@@ -26,36 +26,38 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-12 border-t border-slate-100 bg-white">
+      {/* Stats Section */}
+      <section className="section-base py-12">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
           {[
             { icon: "🏛", val: "30+", label: "Government Schemes", color: "text-[#FF9933]" },
-            { icon: "📄", val: "6", label: "Main Categories", color: "text-[#138808]" },
+            { icon: "📄", val: "6",   label: "Main Categories",    color: "text-[#138808]" },
             { icon: "🌏", val: "All", label: "Indian States Covered", color: "text-blue-600" }
           ].map((item, i) => (
-            <div key={i} className="p-6 bg-slate-50 rounded-2xl">
+            <div key={i} className="card p-6">
               <div className={`text-4xl mb-4 ${item.color}`}>{item.icon}</div>
-              <h3 className="text-2xl font-bold text-slate-800">{item.val}</h3>
-              <p className="text-slate-500 font-medium">{item.label}</p>
+              <h3 className="text-2xl font-bold text-slate-800 dark:text-white">{item.val}</h3>
+              <p className="text-muted font-medium">{item.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="py-20 border-t border-slate-100 bg-white">
+      {/* How It Works Section */}
+      <section className="section-base py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-12 uppercase tracking-widest text-slate-900">How It Works</h2>
+          <h2 className="text-3xl font-bold mb-12 uppercase tracking-widest text-slate-900 dark:text-white">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-10">
             {[
               { num: "1", icon: "📝", title: "Fill Your Details", desc: "Provide basic info like age and state." },
-              { num: "2", icon: "🔍", title: "We Match Schemes", desc: "Our logic finds schemes for you." },
-              { num: "3", icon: "✅", title: "View & Apply", desc: "See benefits and apply links." }
+              { num: "2", icon: "🔍", title: "We Match Schemes",  desc: "Our logic finds schemes for you." },
+              { num: "3", icon: "✅", title: "View & Apply",      desc: "See benefits and apply links." }
             ].map((step, i) => (
-              <div key={i} className="p-6 border border-slate-100 rounded-2xl hover:border-[#FF9933] transition-colors bg-white">
+              <div key={i} className="card p-6 hover:border-[#FF9933]">
                 <div className="w-10 h-10 bg-[#FF9933] text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4">{step.num}</div>
                 <div className="text-4xl mb-4">{step.icon}</div>
-                <h4 className="text-lg font-bold text-slate-800 mb-2">{step.title}</h4>
-                <p className="text-sm text-slate-500">{step.desc}</p>
+                <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">{step.title}</h4>
+                <p className="text-sm text-muted">{step.desc}</p>
               </div>
             ))}
           </div>

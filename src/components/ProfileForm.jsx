@@ -5,13 +5,13 @@ import FilterBar from "./FilterBar";
 // Reusable field wrapper so we don't repeat label + input layout every time
 const Field = ({ label, children }) => (
   <div>
-    <label className="block text-sm font-medium text-slate-700 mb-1">{label}</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">{label}</label>
     {children}
   </div>
 );
 
-// Shared className for every input / select
-const inputClass = "w-full rounded-lg border border-slate-200 px-4 py-2 focus:outline-none focus:border-indigo-500 transition";
+// Shared class for all inputs — defined fully in index.css as .input-field
+const inputClass = "input-field";
 
 const ProfileForm = () => {
   const [form, setForm] = useState({
@@ -79,9 +79,9 @@ const ProfileForm = () => {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">Eligibility Check</h2>
-        <p className="text-slate-500 mb-8">Provide your details to find eligible schemes.</p>
+      <div className="card p-8">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Eligibility Check</h2>
+        <p className="text-muted mb-8">Provide your details to find eligible schemes.</p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -147,11 +147,11 @@ const ProfileForm = () => {
 
         {submitted && (
           <div className="mt-12 border-t pt-8">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
               Eligible Schemes Found: {schemes.length}
             </h3>
             {schemes.length === 0 ? (
-              <p className="text-slate-500 text-center py-8">
+              <p className="text-muted text-center py-8">
                 No schemes found for your profile. Try adjusting your details.
               </p>
             ) : (

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Outfit", "Inter", system-ui, sans-serif;
 }
@@ -12,6 +15,69 @@ body {
   color: #0f172a;
 }
 
+html.dark body {
+  background-color: #111827;
+  color: #f1f5f9;
+}
+
 #root {
   width: 100%;
+}
+
+
+
+/* White card — used in SchemeCard, form, stat boxes, step boxes */
+.card {
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+html.dark .card {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+/* Full-width input and select fields */
+.input-field {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  color: #0f172a;
+  padding: 0.5rem 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-field:focus { border-color: #6366f1; }
+.input-field::placeholder { color: #94a3b8; }
+html.dark .input-field {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: white;
+}
+html.dark .input-field::placeholder { color: #9ca3af; }
+
+/* Muted small text — slate-500 / gray-400 */
+.text-muted {
+  color: #64748b;
+}
+html.dark .text-muted { color: #9ca3af; }
+
+/* Body description text — slate-600 / gray-300 */
+.text-body {
+  color: #475569;
+}
+html.dark .text-body { color: #d1d5db; }
+
+/* Page section background with top border */
+.section-base {
+  background-color: white;
+  border-top: 1px solid #f1f5f9;
+  transition: background-color 0.3s;
+}
+html.dark .section-base {
+  background-color: #111827;
+  border-top-color: #374151;
 }
