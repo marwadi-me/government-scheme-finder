@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Landmark, LayoutGrid, Globe, ClipboardList, CheckCircle, Search } from 'lucide-react'
 import ParliamentImg from '../assets/bgimg.jpg'
 
 const Home = () => {
   return (
     <div className="overflow-hidden">
-      {/* 1. Hero Section */}
+
       <section className="relative min-h-[70vh] flex items-center py-20 bg-white">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <img src={ParliamentImg} alt="Parliament" className="w-full h-full object-cover object-top" style={{ mixBlendMode: 'multiply' }} />
@@ -21,22 +20,21 @@ const Home = () => {
           </p>
           <div className="mt-8">
             <Link to="/form" className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF9933] text-white text-lg font-bold rounded-xl hover:bg-orange-600 transition-colors">
-              Find Your Schemes <ArrowRight />
+              Find Your Schemes <span className="ml-1 text-2xl leading-none">→</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 2. Stats Section */}
       <section className="py-12 border-t border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
           {[
-            { Icon: Landmark, val: "30+", label: "Government Schemes", color: "text-[#FF9933]" },
-            { Icon: LayoutGrid, val: "6", label: "Main Categories", color: "text-[#138808]" },
-            { Icon: Globe, val: "All", label: "Indian States Covered", color: "text-blue-600" }
+            { icon: "🏛", val: "30+", label: "Government Schemes", color: "text-[#FF9933]" },
+            { icon: "📄", val: "6", label: "Main Categories", color: "text-[#138808]" },
+            { icon: "🌏", val: "All", label: "Indian States Covered", color: "text-blue-600" }
           ].map((item, i) => (
             <div key={i} className="p-6 bg-slate-50 rounded-2xl">
-              <item.Icon className={`w-8 h-8 mx-auto mb-4 ${item.color}`} />
+              <div className={`text-4xl mb-4 ${item.color}`}>{item.icon}</div>
               <h3 className="text-2xl font-bold text-slate-800">{item.val}</h3>
               <p className="text-slate-500 font-medium">{item.label}</p>
             </div>
@@ -44,19 +42,18 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. How It Works Section */}
       <section className="py-20 border-t border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-12 uppercase tracking-widest text-slate-900">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-10">
             {[
-              { num: "1", Icon: ClipboardList, title: "Fill Your Details", desc: "Provide basic info like age and state." },
-              { num: "2", Icon: Search, title: "We Match Schemes", desc: "Our logic finds schemes for you." },
-              { num: "3", Icon: CheckCircle, title: "View & Apply", desc: "See benefits and apply links." }
+              { num: "1", icon: "📝", title: "Fill Your Details", desc: "Provide basic info like age and state." },
+              { num: "2", icon: "🔍", title: "We Match Schemes", desc: "Our logic finds schemes for you." },
+              { num: "3", icon: "✅", title: "View & Apply", desc: "See benefits and apply links." }
             ].map((step, i) => (
               <div key={i} className="p-6 border border-slate-100 rounded-2xl hover:border-[#FF9933] transition-colors bg-white">
                 <div className="w-10 h-10 bg-[#FF9933] text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4">{step.num}</div>
-                <step.Icon className="w-10 h-10 mx-auto mb-4 text-slate-400" />
+                <div className="text-4xl mb-4">{step.icon}</div>
                 <h4 className="text-lg font-bold text-slate-800 mb-2">{step.title}</h4>
                 <p className="text-sm text-slate-500">{step.desc}</p>
               </div>
