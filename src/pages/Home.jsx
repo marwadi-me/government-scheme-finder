@@ -6,7 +6,6 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
 
-      {/* Hero Section */}
       <section className="section-base relative min-h-[70vh] flex items-center py-20">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <img src={ParliamentImg} alt="Parliament" className="w-full h-full object-cover object-top" style={{ mixBlendMode: 'multiply' }} />
@@ -26,7 +25,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="section-base py-12">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
           {[
@@ -43,7 +41,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
       <section className="section-base py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-12 uppercase tracking-widest text-slate-900 dark:text-white">How It Works</h2>

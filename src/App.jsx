@@ -7,22 +7,19 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 function App() {
-  // Check if user had dark mode on last time (from localStorage)
   const [isDark, setIsDark] = useState(() => {
     return localStorage.getItem('darkMode') === 'true';
   });
 
-  // Every time isDark changes, update the <html> class and save to localStorage
   useEffect(() => {
     if (isDark) {
-      document.documentElement.classList.add('dark');    // adds .dark to <html>
+      document.documentElement.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark'); // removes .dark from <html>
+      document.documentElement.classList.remove('dark');
     }
-    localStorage.setItem('darkMode', isDark); // remember the choice
+    localStorage.setItem('darkMode', isDark);
   }, [isDark]);
 
-  // Toggle between dark and light
   const toggleDark = () => setIsDark(prev => !prev);
 
   return (

@@ -9,7 +9,6 @@ const Schemes = () => {
   const [loading, setLoading]   = useState(true);
   const [search, setSearch]     = useState('');
 
-  // Fetch schemes once when the page loads
   useEffect(() => {
     fetch('/db.json')
       .then(res => res.json())
@@ -18,14 +17,12 @@ const Schemes = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  // When user clicks a category tab
   const handleFilter = (cat) => {
     setActive(cat);
     setSearch('');
     setFiltered(cat === 'All' ? schemes : schemes.filter(s => s.category === cat));
   };
 
-  // Show only schemes whose name contains the search text
   const visibleSchemes = filtered.filter(s =>
     s.name.toLowerCase().includes(search.toLowerCase())
   );

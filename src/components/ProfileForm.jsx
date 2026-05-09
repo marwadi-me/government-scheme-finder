@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import SchemeCard from "./SchemeCard";
 import FilterBar from "./FilterBar";
 
-// Reusable field wrapper so we don't repeat label + input layout every time
 const Field = ({ label, children }) => (
   <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">{label}</label>
@@ -10,7 +9,6 @@ const Field = ({ label, children }) => (
   </div>
 );
 
-// Shared class for all inputs — defined fully in index.css as .input-field
 const inputClass = "input-field";
 
 const ProfileForm = () => {
@@ -20,14 +18,13 @@ const ProfileForm = () => {
     annualIncome: "", casteCategory: "",
   });
 
-  const [allSchemes, setAllSchemes] = useState([]); // fetched once on mount
-  const [schemes, setSchemes]       = useState([]); // eligible results
-  const [filtered, setFiltered]     = useState([]); // after category filter
+  const [allSchemes, setAllSchemes] = useState([]);
+  const [schemes, setSchemes]       = useState([]);
+  const [filtered, setFiltered]     = useState([]);
   const [active, setActive]         = useState("All");
   const [submitted, setSubmitted]   = useState(false);
   const [loading, setLoading]       = useState(false);
 
-  // Fetch all schemes once when the page loads
   useEffect(() => {
     fetch('/db.json')
       .then(res => res.json())
@@ -35,15 +32,12 @@ const ProfileForm = () => {
       .catch(err => console.error("Failed to load schemes:", err));
   }, []);
 
-  // Update a single form field
   const handleChange = (e) =>
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-  // Filter schemes when form is submitted
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Safety check: if schemes haven't loaded yet, show a message and stop
     if (allSchemes.length === 0) {
       alert("Schemes are still loading. Please wait a moment and try again.");
       return;
@@ -51,10 +45,9 @@ const ProfileForm = () => {
 
     setLoading(true);
 
-    const age    = parseInt(form.age);      // convert age to a number
-    const income = parseInt(form.annualIncome); // income is now a clean number from <select>
+    const age    = parseInt(form.age);
+    const income = parseInt(form.annualIncome);
 
-    // Go through every scheme and keep only the ones that match the user
     const eligible = allSchemes.filter(s => {
       const ageOk      = age >= s.min_age && age <= s.max_age;
       const incomeOk   = income <= s.max_income;
@@ -71,7 +64,6 @@ const ProfileForm = () => {
     setLoading(false);
   };
 
-  // Filter results by category tab
   const handleFilter = (cat) => {
     setActive(cat);
     setFiltered(cat === "All" ? schemes : schemes.filter(s => s.category === cat));
@@ -116,7 +108,6 @@ const ProfileForm = () => {
             </Field>
 
             <Field label="Annual Family Income">
-              {/* Each option value is the actual number — easy to parse correctly */}
               <select name="annualIncome" value={form.annualIncome} onChange={handleChange} required className={`${inputClass} bg-white`}>
                 <option value="">Select income range</option>
                 <option value="100000">Below ₹1,00,000</option>
@@ -156,7 +147,6 @@ const ProfileForm = () => {
               </p>
             ) : (
               <>
-                {/* Pass schemes so FilterBar can show count per category */}
                 <FilterBar activeCategory={active} onCategoryChange={handleFilter} schemes={schemes} />
                 <div className="grid grid-cols-1 gap-6 mt-6">
                   {filtered.map(s => <SchemeCard key={s.id} scheme={s} />)}

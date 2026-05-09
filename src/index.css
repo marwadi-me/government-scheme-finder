@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Enable class-based dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -24,9 +23,6 @@ html.dark body {
   width: 100%;
 }
 
-
-
-/* White card — used in SchemeCard, form, stat boxes, step boxes */
 .card {
   background-color: white;
   border-radius: 1rem;
@@ -39,7 +35,6 @@ html.dark .card {
   border-color: #374151;
 }
 
-/* Full-width input and select fields */
 .input-field {
   width: 100%;
   border-radius: 0.5rem;
@@ -59,19 +54,16 @@ html.dark .input-field {
 }
 html.dark .input-field::placeholder { color: #9ca3af; }
 
-/* Muted small text — slate-500 / gray-400 */
 .text-muted {
   color: #64748b;
 }
 html.dark .text-muted { color: #9ca3af; }
 
-/* Body description text — slate-600 / gray-300 */
 .text-body {
   color: #475569;
 }
 html.dark .text-body { color: #d1d5db; }
 
-/* Page section background with top border */
 .section-base {
   background-color: white;
   border-top: 1px solid #f1f5f9;
